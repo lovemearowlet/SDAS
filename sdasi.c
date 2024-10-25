@@ -12,11 +12,11 @@ void install(char *pkg) {
     if (distro = "Gentoo") {
         //do the install command
     }
-    if (distro = "Arch") {
-        //arch install commadn
-    }
-    if (distro = "Debian") {
-        //debian install command 
-    }
+//    if (distro = "Arch") {
+//        //arch install commadn
+//    }
+//    if (distro = "Debian") {
+//        //debian install command 
+//    }
 }
 

@@ -11,3 +11,9 @@ void help(char *arg2) {
     }
 
 }
+void version() {
+    printf("SDAS Info:");
+    printf("Version: V0.1");
+    printf("Distro Set: %s", distro)
+    prinf("Credits: Made by SP649");
+}
