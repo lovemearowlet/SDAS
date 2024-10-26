@@ -4,4 +4,5 @@ SDAS stands for SP649's Distro App Store and is a CLI (might change) where you c
 Dependencies/Requirements (As of right now):
 1. Sudo
 2. Gentoo
+3. Xorg (idk about wayland but it might work)
 ```
