@@ -1,5 +1,5 @@
 # YAGI
-A GUI for gentoo and arch but I might add support for other distros later.
+A GUI (coming soon) for gentoo and arch but I might add support for other distros later.
  (Does NOT manage useflags for you!)
 ```
 Dependencies/Requirements (As of right now):
