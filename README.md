@@ -1,4 +1,4 @@
-# YAGI (in dev)
+# YAGI (work in progress | will NOT take pull requests till i fully finish it cuz i wana do this most by my self)
 A GUI (coming soon) for gentoo and arch but I might add support for other distros later. Also this is just a small project to try C.
  (Does NOT manage useflags for you!)
 ```
