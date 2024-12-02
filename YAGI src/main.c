@@ -6,37 +6,37 @@
 int update(char **pkg) {//update
 	if (dis == 0) {//gentoo
 		if (sod == 0) {
-			//gentoo with sudo
+			system("sudo emerge emerge --update --deep --newuse --ask @world");
 		}
 		if (sod == 1) {
-			//gentoo with doas
+			system("doas emerge emerge --update --deep --newuse --ask @world");
 		}
 	}
 	if (dis == 1) {//arch
 		if (sod == 0) {
-			//arch with sudo
+			system("sudo pacman -Syu");
 		}
 		if (sod == 1) {
-			//arch with doas
+			system("doas pacman -Syu");
 		}
 	}
 }
 
-int install(char **pkg) {//install
+int install(char **pkg[]) {//install
 	if (dis == 0) {//gentoo
 		if (sod == 0) {
-			//gentoo with sudo
+			system("sudo emerge -a %s", pkg);
 		}
 		if (sod == 1) {
-			//gentoo with doas
+			system("doas emerge -a %s", pkg);
 		}
 	}
 	if (dis == 1) {//arch
 		if (sod == 0) {
-			//arch with sudo
+			system("sudo pacman -Sy %s", pkg);
 		}
 		if (sod == 1) {
-			//arch with doas
+			system("doas pacman -Sy %s", pkg);
 		}
 	}
 }
