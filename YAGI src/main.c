@@ -16,7 +16,7 @@ int __process_pkg(char *flags, char *pkg) {
     size_t cmd_size = (strlen(privilege_cmd) + strlen(pkg_mananger) + strlen(flags) + strlen(pkg) + 4) * sizeof(char);
     cmd = alloca(cmd_size + 1);
     snprintf(cmd, cmd_size, "%s %s %s %s", privilege_cmd, pkg_mananger, flags, pkg);
-    return puts(cmd);
+    return system(cmd);
 }
 
 int updatesys() {//update sys
@@ -50,7 +50,4 @@ int uninstall(char *pkg) {//uninstall
 }
 
 int main() {
-    updatesys();
-    install("firefox");
-    uninstall("chrome");
 }
