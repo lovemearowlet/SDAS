@@ -3,7 +3,7 @@
 
 #include "config.c"
 
-int update() {//update
+int updatesys() {//update sys
 	if (dis == 0) {//gentoo
 		if (sod == 0) {
 			system("sudo emerge emerge --update --deep --newuse --ask @world");
