@@ -61,3 +61,7 @@ int uninstall(char **pkg[]) {//uninstall
 }
 
 //update a package goes here
+
+int main() {
+
+}
