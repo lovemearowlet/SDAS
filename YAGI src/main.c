@@ -3,7 +3,7 @@
 
 #include "config.c"
 
-int update(char **pkg) {//update
+int update() {//update
 	if (dis == 0) {//gentoo
 		if (sod == 0) {
 			system("sudo emerge emerge --update --deep --newuse --ask @world");
@@ -41,7 +41,7 @@ int install(char **pkg[]) {//install
 	}
 }
 
-int uninstall(char **pkg) {//uninstall
+int uninstall(char **pkg[]) {//uninstall
 	if (dis == 0) {//gentoo
 		if (sod == 0) {
 			system("sudo emerge -a --deselect --depclean %s", pkg);
