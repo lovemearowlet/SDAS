@@ -9,12 +9,8 @@ this is for forkers and modders to add to (to ad you also must add stuff tot the
 
 */
 
-//using ints cuz they are easier imo
+//privilege command
+static const char *privilege_cmd = "sudo";
 
-//option for doas or sudo: 0 is sudo 1 is doas
-//default is 0
-int sod = 0;
-
-//option for distro: 0 is gentoo 1 is arch
-//default is 0
-int dis = 0;
+//package mananger
+static const char *pkg_mananger= "emerge";
