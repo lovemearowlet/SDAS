@@ -44,18 +44,18 @@ int install(char **pkg[]) {//install
 int uninstall(char **pkg) {//uninstall
 	if (dis == 0) {//gentoo
 		if (sod == 0) {
-			//gentoo with sudo
+			system("sudo emerge -a --deselect --depclean %s", pkg);
 		}
 		if (sod == 1) {
-			//gentoo with doas
+			system("doas emerge -a --deselect --depclean %s", pkg);
 		}
 	}
 	if (dis == 1) {//arch
 		if (sod == 0) {
-			//arch with sudo
+			system("sudo pacman -R %s", pkg);
 		}
 		if (sod == 1) {
-			//arch with doas
+			system("sudo pacman -R %s", pkg);
 		}
 	}
 }
