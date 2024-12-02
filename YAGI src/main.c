@@ -1,67 +1,53 @@
 #include <stdio.h>
+#include <alloca.h>
 #include <stdlib.h>
+#include <string.h>
 
-#include "config.c"
+#include "config.h"
+
+int __process_pkg(char *flags, char *pkg) {
+    if(flags == NULL) {
+        flags = "";
+    }
+    if(pkg == NULL) {
+        pkg = "";
+    }
+    char *cmd = NULL;
+    size_t cmd_size = (strlen(privilege_cmd) + strlen(pkg_mananger) + strlen(flags) + strlen(pkg) + 4) * sizeof(char);
+    cmd = alloca(cmd_size + 1);
+    snprintf(cmd, cmd_size, "%s %s %s %s", privilege_cmd, pkg_mananger, flags, pkg);
+    return system(cmd);
+}
 
 int updatesys() {//update sys
-	if (dis == 0) {//gentoo
-		if (sod == 0) {
-			system("sudo emerge emerge --update --deep --newuse --ask @world");
-		}
-		if (sod == 1) {
-			system("doas emerge emerge --update --deep --newuse --ask @world");
-		}
-	}
-	if (dis == 1) {//arch
-		if (sod == 0) {
-			system("sudo pacman -Syu");
-		}
-		if (sod == 1) {
-			system("doas pacman -Syu");
-		}
-	}
+    if(!strncmp(pkg_mananger, "emerge", 6)) {
+        __process_pkg("--update --deep --newuse @world", NULL);
+    }
+    if(!strncmp(pkg_mananger, "pacman", 6)) {
+        __process_pkg("-Syu --noconfirm", NULL);
+    }
+    return 1;
 }
 
-int install(char **pkg[]) {//install
-	if (dis == 0) {//gentoo
-		if (sod == 0) {
-			system("sudo emerge -a %s", pkg);
-		}
-		if (sod == 1) {
-			system("doas emerge -a %s", pkg);
-		}
-	}
-	if (dis == 1) {//arch
-		if (sod == 0) {
-			system("sudo pacman -Sy %s", pkg);
-		}
-		if (sod == 1) {
-			system("doas pacman -Sy %s", pkg);
-		}
-	}
+int install(char *pkg) {//install
+    if(!strncmp(pkg_mananger, "emerge", 6)) {
+        __process_pkg(NULL, pkg);
+    }
+    if(!strncmp(pkg_mananger, "pacman", 6)) {
+        __process_pkg("-S --noconfirm", pkg);
+    }
+    return 1;
 }
 
-int uninstall(char **pkg[]) {//uninstall
-	if (dis == 0) {//gentoo
-		if (sod == 0) {
-			system("sudo emerge -a --deselect --depclean %s", pkg);
-		}
-		if (sod == 1) {
-			system("doas emerge -a --deselect --depclean %s", pkg);
-		}
-	}
-	if (dis == 1) {//arch
-		if (sod == 0) {
-			system("sudo pacman -R %s", pkg);
-		}
-		if (sod == 1) {
-			system("doas pacman -R %s", pkg);
-		}
-	}
+int uninstall(char *pkg) {//uninstall
+    if(!strncmp(pkg_mananger, "emerge", 6)) {
+        __process_pkg("--deselect --depclean", pkg);
+    }
+    if(!strncmp(pkg_mananger, "pacman", 6)) {
+        __process_pkg("-Rncs --noconfirm", pkg);
+    }
+    return 1;
 }
-
-//update a package goes here
 
 int main() {
-
 }
