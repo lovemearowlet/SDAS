@@ -55,7 +55,7 @@ int uninstall(char **pkg) {//uninstall
 			system("sudo pacman -R %s", pkg);
 		}
 		if (sod == 1) {
-			system("sudo pacman -R %s", pkg);
+			system("doas pacman -R %s", pkg);
 		}
 	}
 }
